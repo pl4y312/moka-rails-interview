@@ -1,3 +1,4 @@
 class Item < ActiveRecord::Base
-  belongs_to :business
+	belongs_to :business
+	
 end

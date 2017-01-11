@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
 
+  around_filter :catch_not_found
+
+  # Get all item list
+  # GET /items
   def index
     # List all of the Items that are owned by the logged in User's Business
     if current_business.present?
@@ -10,15 +14,52 @@ class ItemsController < ApplicationController
     end
   end
 
+  # Create new item page
+  # GET /items/new
+  def new
+    @item = Item.new
+  end
+
+  # Edit item page
+  # GET /items/:id/edit
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  # Create new item
+  # POST /items
   def create
-    # TODO: [MOKA-001] Finish the implementation of Create/Update/Delete for Items
+    Item.create(item_params)
+
+    redirect_to items_path, notice: "The item successfully added."
   end
 
-  def Update
-    # TODO: [MOKA-001] Finish the implementation of Create/Update/Delete for Items
+  # Update item
+  # PUT /items/:id
+  def update
+    Item.find(params[:id]).update(item_params)
+
+    redirect_to items_path, notice: "The item successfully added."
   end
 
+  # Delete item
+  # DELETE /items/:id
   def destroy
-    # TODO: [MOKA-001] Finish the implementation of Create/Update/Delete for Items
+    Item.find(params[:id]).destroy
+
+    redirect_to items_path, notice: "The item successfully deleted."
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :price).merge(business_id: current_business.id)
+  end
+
+  # Catch if item not found
+  def catch_not_found
+    yield
+  rescue ActiveRecord::RecordNotFound
+    redirect_to items_path, :notice => "Item not found."
   end
 end

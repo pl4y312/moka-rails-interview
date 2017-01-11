@@ -109,3 +109,20 @@ table.item-list {
 #alert ul{
     margin: 5px 19px;
 }
+
+form{
+    display: inline-block
+}
+
+.btn{
+    background: #BBB;
+    color: #605F5F !important;
+}
+
+.btn:hover{
+    color: #E9E9E9 !important;
+}
+
+.btn:focus{
+    color: #6B6B6B !important;
+}

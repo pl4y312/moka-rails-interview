@@ -4,18 +4,18 @@
 
 <table class="item-list">
   <tr>
-    <th>Item name</th>
+    <th>Item Name</th>
     <th>Price</th>
-    <th><button name="add">Add</button></th>
+    <th><%= link_to "Add New Item", new_item_path(), :class => "btn" %></th>
   </tr>
 
   <% @items.each do |item| %>
     <tr>
       <td><%= item.name %></td>
       <td><%= item.price %></td>
-      <td>
-        <button name="edit">Edit</button>
-        <button name="delete">Delete</button>
+      <td class="fit-width">
+        <%= link_to "Edit", edit_item_path(item.id), :class => "btn" %>
+        <%= link_to "Delete", item_path(item.id), :method => :delete, :class => "btn", :data => {:confirm => "Are you sure?"} %>  
       </td>
     </tr>
   <% end %>

@@ -1,0 +1,16 @@
+<%= form_for @item, url: {action: @method } do |f| %>
+	<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :price %>
+		<%= f.text_field :price %>
+	</div>
+
+	<div class="form-group">
+		<%= f.submit @btn_text, class: "btn" %>
+		<%= link_to "Cancel", items_path(), class: "btn" %>
+	</div>
+<% end %>

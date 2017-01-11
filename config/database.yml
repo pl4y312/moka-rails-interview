@@ -3,7 +3,7 @@ development: &local
   database: mokatest
   host: localhost
   username: postgres
-  password: 12345678
+  password: admin
   port: 5432
   pool: 5
   timeout: 5000
@@ -13,7 +13,7 @@ test:
   database: mokatest
   host: localhost
   username: postgres
-  password: 12345678
+  password: admin
   port: 5432
   pool: 5
   timeout: 5000
@@ -23,7 +23,7 @@ production:
   database: mokatest
   host: localhost
   username: postgres
-  password: 12345678
+  password: admin
   port: 5432
   pool: 5
   timeout: 5000
